@@ -21,6 +21,12 @@ $(function () {
                         min: 3,
                         max: 6,
                         message: "用户名长度必须是3-6位"
+                    },
+                    
+                    // 在使用$("form").data("bootstrapValidator").updateStatus()中只传前两个参数的时候,
+                    // 会将这个字段的所有的校验规则显示出来, 但是callback这个校验规则不会出现
+                    callback: {
+                        message: "用户名不存在"
                     }
                 }
             },
@@ -33,6 +39,9 @@ $(function () {
                         min: 6,
                         max: 12,
                         message: "密码长度必须是6-12位"
+                    },
+                    callback: {
+                        message: "密码错误"
                     }
                 }
             }
@@ -43,5 +52,33 @@ $(function () {
             invalid: 'glyphicon glyphicon-thumbs-down',
             validating: 'glyphicon glyphicon-refresh'
         },
+    })
+
+
+    // 2.给表单注册校验成功事件
+    $("form").on("success.form.bv", function(e) {
+        // 添加这个阻止我们点击submit按钮时页面的跳转
+        e.preventDefault();
+        $.ajax({
+            type: "post",
+            url: "/employee/employeeLogin",
+            data: $("form").serialize(),
+            success: function(info) {
+                if(info.error === 1000) {
+                    $("form").data("bootstrapValidator").updateStatus("username", "INVALID", "callback");
+                }else if(info.error === 1001) {
+                    $("form").data("bootstrapValidator").updateStatus("password", "INVALID", "callback");
+                }
+                if(info.success) {
+                    location.href = "./index.html";
+                }
+            }
+        })
+    })
+
+
+    // 3. 给重置按钮注册点击事件
+    $("[type='reset']").on("click", function() {
+        $("form").data("bootstrapValidator").resetForm(true);
     })
 })
