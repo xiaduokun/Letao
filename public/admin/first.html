@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <title>一级分类</title>
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
@@ -36,8 +36,8 @@
                         <span>分类管理</span>
                     </a>
                     <!-- 这里写的是分类管理的子级菜单, 欺骗用户, 因为a连接中不能放a链接 -->
-                    <div class="second" style="display: none">
-                        <a href="./first.html">一级分类</a>
+                    <div class="second">
+                        <a class="active" href="./first.html">一级分类</a>
                         <a href="./second.html">二级分类</a>
                     </div>
                 </li>
@@ -67,14 +67,12 @@
                 <li>
                     <a href="#">管理系统</a>
                 </li>
-                <li class="active">用户管理</li>
+                <li class="active">一级分类</li>
             </ul>
 
             <!-- 每个页面的具体内容 -->
             <div class="lt_content">
-                <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-                <div id="left" style="width: 45%;height:400px;" class="pull-left"></div>
-                <div id="right" style="width: 45%;height:400px;" class="pull-right"></div>
+
             </div>
         </div>
     </div>
@@ -109,10 +107,8 @@
     <script src="./lib/bootstrap/js/bootstrap.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
-    <script src="./lib/echarts/echarts.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/login.js"></script>
-    <script src="./js/index.js"></script>
 </body>
 
 </html>

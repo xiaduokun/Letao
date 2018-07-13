@@ -5,17 +5,32 @@
     margin-top: 150px;
 }
 
+
 /* 首页中的样式 */
+/* 1. 左边栏 */
 html, body {
     height: 100%;
+}
+body {
+    padding-left: 180px;
+    transition: all 1s;
+}
+body.active {
+    padding-left: 0;
 }
 .lt_aside {
     width: 180px;
     height: 100%;
     background-color: #222d32;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 1s;
 }
-
-
+/* 注意这种样式的写法 */
+.lt_aside.active {
+    transform: translateX(-180px);
+}
 
 /* 以后项目中用到a img 通通转成block */
 .lt_aside .brand a {
@@ -29,7 +44,9 @@ html, body {
     background-color: #367fa9;
 }
 /* 注意a本身是没有下划线的, 只有a被hover才会出现下划线 */
-a:hover {
+a:link,
+a:visited,
+a:hover,a:active {
     text-decoration: none;
 }
 
@@ -74,4 +91,23 @@ ul,ol {
 .lt_aside .nav a.active {
     background-color: #1d1f21;
     border-left: 3px solid #069;
+}
+
+/* 2. 右边栏 */
+.lt_main {
+    width: 100%;
+    height: 100%;
+    /* background-color: pink; */
+}
+
+.lt_header {
+    height: 50px;
+    line-height: 50px;
+    background-color: #3c8dbc;
+    padding: 0 15px;
+    margin-bottom: 20px;
+}
+.lt_header a {
+    color: #fff;
+    font-size: 16px;
 }
