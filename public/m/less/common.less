@@ -1,0 +1,106 @@
+html, body {
+    // 这里只要贵姓高是100%就好， 因为宽度默认是100%
+    height: 100%;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    display: block;
+    width: 100%;
+  }
+a {
+    display: block;
+}
+
+.lt_container {
+    // 这里的宽度不能写死了， 不然就不能利用下面的max-width， min-width进行缩放了！！！
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    max-width: 640px;
+    min-width: 320px;
+    padding: 45px 0 55px 0;
+}
+
+.lt_header {
+    width: 100%;
+    height: 45px;
+    background-color: #069;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left:0;
+    
+    .icon_left, .icon_right {
+        position: absolute;
+        top: 0;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+    }
+    .icon_left {
+        left: 0;
+    }
+    .icon_right {
+        right: 0;
+    }
+    h3 {
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        font-weight: normal; 
+        font-size: 18px; 
+        // mui这个库给h3设置了margin-top/bottom5
+        margin: 0;
+        padding: 0;  
+    }
+}
+
+.lt_footer {
+    width: 100%;
+    position: absolute;
+    background-color: #069;
+    bottom: 0;
+    a {
+        // 如果一个元素中含有另一个块级元素, 
+        // 那么是不能通过设置line-height=height值来使它里面的文本竖直居中的
+        // 比如这里a中含有p这一块级元素, 就不行. 如果bap设置成行内块/行内元素则可以
+        padding-top: 10px;
+        float: left;
+        width: 25%;
+        height: 55px;
+        text-align: center;
+        color: #fff;
+
+        p {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        &.active {
+            color: darkorange;
+            p {
+                color: darkorange;
+            }
+        }
+
+    }
+}
+
+.lt_main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+
+}

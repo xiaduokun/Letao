@@ -72,10 +72,50 @@
 
             <!-- 每个页面的具体内容 -->
             <div class="lt_content">
-
+                <!-- 给表格加上这三个类名就能有对应的样式 -->
+                <table class="table table-stripted table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="10%">序号</th>
+                            <th width="30%">用户名</th>
+                            <th width="30%">手机号</th>
+                            <th width="20%">状态</th>
+                            <th width="10%">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 挖个坑 -->
+                    </tbody>
+                </table>
+                <!-- 因为分页这个插件的ul本身上设置pull-right是无效的, 
+                    控制台下可见这个ul是一个inline-block元素了, 所以我们给它套个父盒子,使用text-right这个类 -->
+                <div class="text-right">
+                    <ul id="paginator"></ul>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- 模板 -->
+    <script type="text/html" id="tpl">
+        {{ each rows v i}}
+            <tr>
+                <!-- i代表下标 page, size都是info对象的属性可以直接拿来用 -->
+                <td>{{ i + 1 + (page - 1)*size  }}</td>
+                <td>{{ v.username}}</td>
+                <td>{{ v.mobile}}</td>
+                <td>{{ v.isDelete === 1 ? "正常" : "禁用" }}</td>
+                <td data-id="{{ v.id }}">
+                    {{ if v.isDelete === 1 }}
+                        <button class="btn btn-danger btn-sm">禁用</button>
+                    {{ else }}
+                        <button class="btn btn-success btn-sm">启用</button>
+                    {{ /if }}
+                </td>
+            </tr>
+        {{ /each }}
+    </script>
+
 
     <!-- 模态框 -->
     <div class="modal fade" id="logoutModal">
@@ -90,8 +130,8 @@
                 </div>
                 <div class="modal-body">
                     <p class="text-danger">
-                      <span class="glyphicon glyphicon-info-sign"></span>
-                      <span>你确定要退出后台管理系统吗?</span>
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        <span>你确定要退出后台管理系统吗?</span>
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -102,13 +142,40 @@
         </div>
     </div>
 
+    <!-- 启用禁用模态框 -->
+    <div class="modal fade" id="userModal">
+            <!-- 这一行是模态框的内容区 -->
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">温馨提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                            <span>确定要执行此操作吗?</span>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary btn_confirm">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     <script src="./lib/jquery/jquery.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="./js/user.js"></script>
 </body>
 
 </html>

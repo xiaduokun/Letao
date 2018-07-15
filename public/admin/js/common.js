@@ -1,7 +1,5 @@
 
-
-
-
+// 进度条相关功能
 $(document).ajaxStart(function() {
     NProgress.start();
 });
@@ -12,6 +10,7 @@ $(document).ajaxStart(function() {
     setTimeout(function() {}, 2000);
     NProgress.done();
 });
+
 
 // 左边栏的二级菜单的显示与隐藏
 $(".second").prev().on('click', function() {
@@ -24,14 +23,31 @@ $(".icon-menu").on('click', function() {
     $("body").toggleClass("active");
 })
 
+//非登陆页面，判断当前用户是否是登录了，如果登录了，就继续，如果没登陆，需要跳转到登录页面。
+if(location.href.indexOf("login.html") == -1){
+    $.ajax({
+      type:"get",
+      url:"/employee/checkRootLogin",
+      success:function (data) {
+        if(data.error === 400){
+          //说明用户没有登录，跳转到登录页面
+          location.href = "login.html";
+        }
+      }
+    })
+  }
+
+
 // 模态框的显示与隐藏
 // 1. 给退出图标注册点击事件
 $(".icon-logout").on("click", function() {
     $("#logoutModal").modal("show");
 })
+
+
 // 2. 给退出按钮注册点击事件
 $(".btn_logout").on('click', function() {
-    // 先发送ajax请求,告诉服务器我要退出, 服务器告诉你退出成功了, 再跳转到loginin页面
+    // 先发送ajax请求,告诉服务器我要退出, 服务器告诉你退出成功了, 再跳转到login页面
     $.ajax({
         type: "get",
         url: "/employee/employeeLogout",
