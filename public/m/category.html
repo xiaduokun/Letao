@@ -38,60 +38,7 @@
           <div class="mui-scroll">
             <!--这里放置真实显示的DOM内容-->
             <ul class="mui-clearfix">
-              <li class="active">
-                <a href="#">运动馆</a>
-              </li>
-              <li>
-                <a href="#">女士馆</a>
-              </li>
-              <li>
-                <a href="#">男士馆</a>
-              </li>
-              <li>
-                <a href="#">运动馆</a>
-              </li>
-              <li>
-                <a href="#">女士馆</a>
-              </li>
-              <li>
-                <a href="#">男士馆</a>
-              </li>
-              <li>
-                <a href="#">运动馆</a>
-              </li>
-              <li>
-                <a href="#">女士馆</a>
-              </li>
-              <li>
-                <a href="#">男士馆</a>
-              </li>
-              <li>
-                <a href="#">运动馆</a>
-              </li>
-              <li>
-                <a href="#">女士馆</a>
-              </li>
-              <li>
-                <a href="#">男士馆</a>
-              </li>
-              <li>
-                <a href="#">运动馆</a>
-              </li>
-              <li>
-                <a href="#">女士馆</a>
-              </li>
-              <li>
-                <a href="#">男士馆</a>
-              </li>
-              <li>
-                <a href="#">运动馆</a>
-              </li>
-              <li>
-                <a href="#">女士馆</a>
-              </li>
-              <li>
-                <a href="#">男士馆</a>
-              </li>
+              <!-- 挖个坑 -->
             </ul>
           </div>
         </div>
@@ -110,44 +57,8 @@
               <li>
                 <a href="#">
                   <img src="images/brand1.png" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="images/brand2.png" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="images/brand3.png" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="images/brand4.png" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="images/brand5.png" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="images/brand6.png" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="images/brand7.png" alt="">
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="images/brand8.png" alt="">
-                </a>
-              </li>
-      
+                  <p>耐克</p>
+                </a> 
             </ul>
           </div>
         </div>
@@ -175,7 +86,37 @@
     </div>
   </div>
 
+  <!-- 左边ul的模板 -->
+  <script type="text/html" id="tpl">
+    {{ each rows v i}}
+    <!-- 这里使用i, i就是下标,我没有想到, 并且永远记住下标是从0开始的 -->
+      <li date-id={{v.id}} class="{{ i == 0 ? 'active' : '' }}">
+        <a href="#">{{ v.categoryName}}</a>
+      </li>
+    {{ /each}}
+  </script>
+
+  <!-- 右边ul的模板 -->
+  <script type="text/html" id="tpl2">
+    <!-- 这里使用这个if /if 如果这个执行了,下面的each就不执行了,记住模板中的这种写法 -->
+    {{ if rows.length == 0}}
+      <p>当前分类下暂无更多数据</p>
+    {{ /if}}
+
+    {{ each rows v i}}
+      <li>
+        <a href="#">
+          <img src="{{ v.brandLogo?v.brandLogo:images/none.png}}" alt="">
+          <p>{{ v.brandName}}</p>
+        </a>
+      </li>
+    {{/each}}
+  </script>
+
+
   <script src="./lib/mui/js/mui.js"></script>
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/category.js"></script>
 </body>
