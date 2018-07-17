@@ -1,0 +1,116 @@
+<!-- 
+  这一这整个页面都是移动端页面， 
+  看效果也要chrome的模拟移动端测试，不然像手动滑动之类的效果是看不见的 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>乐淘商城-搜索页</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./lib/fa/css/font-awesome.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/search.css">
+
+</head>
+
+<body>
+  <div class="lt_container">
+    <!-- 头部 -->
+    <div class="lt_header">
+      <a href="javascript:history.go(-1)">
+        <span class="fa fa-chevron-left icon_left"></span>
+      </a>
+      <h3>搜索中心</h3>
+    </div>
+
+    <!-- 主体 -->
+    <div class="lt_main">
+
+      <!-- 
+            区域滚动 坑：整个。mui-scroll-wrapper这个大div默认是absolute定位的， 
+            要给他的父盒子设置相对定位 
+        -->
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <!--这里放置真实显示的DOM内容-->
+
+          <!-- 搜索 -->
+          <div class="lt_search">
+            <input type="text" placeholder="请输入搜索关键字">
+            <button class="mui-btn mui-btn-primary">搜索</button>
+          </div>
+
+          <!-- 搜索历史 -->
+          <div class="lt_history">
+            <!-- 挖个坑 -->
+            
+          </div>
+      </div>
+    </div>
+
+    <!-- 尾部 -->
+    <div class="lt_footer mui-clearfix">
+      <a href="index.html">
+        <span class="fa fa-home"></span>
+        <p>首页</p>
+      </a>
+      <a href="category.html">
+        <span class="fa fa-bars"></span>
+        <p>分类</p>
+      </a>
+      <a href="cart.html">
+        <span class="fa fa-shopping-cart"></span>
+        <p>购物车</p>
+      </a>
+      <a href="user.html">
+        <span class="fa fa-user"></span>
+        <p>会员中心</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- 搜索历史的模板       记住这种模板的写法!!! 模板一定要写在if /if之间才会有效                              -->
+  <script type="text/html" id="tpl">
+    {{if list.length ==0 }}
+      <p>没有历史搜索记录</p>
+    {{ /if}}
+
+    {{ if list.length > 0 }}
+    <div class="title mui-clearfix">
+        <div class="mui-pull-left">搜索历史</div>
+        <div class="mui-pull-right btn-empty">
+          <span class="fa fa-trash"></span>
+          <span>清空记录</span>
+        </div>
+    </div>
+
+    <div class="content">
+      <ul>
+        {{ each list v i }}
+          <li class="mui-clearfix">
+            <a href="searchList.html?key={{v}}" class="mui-pull-left">{{ v }}</a>
+            <span class="mui-icon mui-icon-closeempty mui-pull-right" data-index="{{ i }}"></span>
+          </li>
+        {{ /each}}
+      </ul>
+    </div>
+    {{ /if }}
+  </script>
+
+
+
+  <script src="./lib/mui/js/mui.js"></script>
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/search.js"></script>
+
+</body>
+
+</html>

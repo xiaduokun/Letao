@@ -90,3 +90,49 @@ a {
   position: relative;
   background-color: #fff;
 }
+.lt_search {
+  padding: 10px;
+}
+.lt_search input {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #007aff;
+  padding-left: 10px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 12px;
+}
+.lt_search button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  height: 34px;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #007aff;
+}
+.product {
+  padding: 10px;
+}
+.product ul li {
+  width: 48%;
+  float: left;
+  margin-bottom: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+.product ul li a {
+  padding: 10px;
+}
+.product ul li a p {
+  text-align: center;
+}
+.product ul li a .oldPrice {
+  color: #666;
+}
+.product ul li a .price {
+  color: red;
+}
+.product ul li:nth-child(even) {
+  margin-left: 4%;
+}

@@ -90,7 +90,7 @@
   <script type="text/html" id="tpl">
     {{ each rows v i}}
     <!-- 这里使用i, i就是下标,我没有想到, 并且永远记住下标是从0开始的 -->
-      <li date-id={{v.id}} class="{{ i == 0 ? 'active' : '' }}">
+      <li data-id={{v.id}} class="{{ i == 0 ? 'active' : '' }}">
         <a href="#">{{ v.categoryName}}</a>
       </li>
     {{ /each}}

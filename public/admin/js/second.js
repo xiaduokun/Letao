@@ -38,7 +38,7 @@ $(function() {
         $(".dropdown-text").text($(this).text());
 
         // 5.2 修改category的校验状态,注意updateStatus中不是写类选择器,是校验字段
-        // $("form").data("bootstrapValidator").updateStatus("categoryId", "VALID");
+        $("form").data("bootstrapValidator").updateStatus("categoryId", "VALID");
     })
 
     // 4. 图片上传
@@ -61,7 +61,7 @@ $(function() {
             $(".brandLogo").val(data.result.picAddr);
 
             // 5.2 修改brandLogo的校验状态,让校验通过
-            // $("form").data("bootstrapValidator").updateStatus("brandLogo", "VALID");
+            $("form").data("bootstrapValidator").updateStatus("brandLogo", "VALID");
         }
     });
 
