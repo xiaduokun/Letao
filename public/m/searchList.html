@@ -109,9 +109,6 @@
 
   <!-- 商品的模板 -->
   <script type="text/html" id="tpl">
-    {{ if data.length==0 }}
-    <p>暂无更多商品数据</p>
-    {{ /if }}
     {{ each data v i}}
     <li>
         <a href="#">
@@ -121,7 +118,7 @@
             <span class="price">¥{{v.price}}</span>
             <del class="oldPrice">¥{{v.oldPrice}}</del>
           </p>
-          <button class="mui-btn mui-btn-primary">立即购买</button>
+          <a href="product.html?id={{ v.id }}"><button class="mui-btn mui-btn-primary">立即购买</button></a>
         </a>
       </li>
     {{ /each}}

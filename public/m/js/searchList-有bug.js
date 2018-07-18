@@ -27,8 +27,7 @@ $(function() {
 
                     // 数据拿到后, 结束下拉刷新,不然下拉刷新状态会一直维持
                     mui(".mui-scroll-wrapper").pullRefresh().endPulldownToRefresh();
-                    // 重置上拉加载
-                    mui('.mui-scroll-wrapper').pullRefresh().refresh(true);
+                    // mui(".mui-scroll-wrapper").pullRefresh().Refresh();
                 });
             } 
             },
@@ -87,9 +86,9 @@ $(function() {
         return obj;
     }
 
-    // 2. 获取地址栏中的参数key, 将其写入到input
+    // 2. 获取地址栏中的参数key, 将其写入到input, 然后发送ajax请求
     $(".lt_search input").val(key);
-    // render();
+    render();
     
     // 将向后台发送ajax请求封装
     function render(callback) {
@@ -104,7 +103,6 @@ $(function() {
             var type = $checked.data("type");
             var value = $checked.find(".lt_sort_icon").hasClass("fa-angle-down")?2:1;
             obj[type] = value;
-            // console.log(obj);
         }
 
         $.ajax({
@@ -112,15 +110,48 @@ $(function() {
             url: "/product/queryProduct",
             data: obj,
             success: function(info) {
-                // console.log(info);
                 // 假定获取数据需要一秒钟
                 setTimeout(function() {
-                    callback(info);
+                   callback(info);
                 }, 1000);
             }
         })
     }
 
+    // 将向后台发送ajax请求封装, 这是给上拉加载准备的render
+    // function render2() {
+    //     var obj= {
+    //         page: page,
+    //         pageSize: pageSize,
+    //         proName: key
+    //     }
+    //     // 考虑要不要给ajax传递第四个参数
+    //     var $checked = $(".lt_sort li.active");
+    //     if( $checked.length ==1 ){
+    //         var type = $checked.data("type");
+    //         var value = $checked.find(".lt_sort_icon").hasClass("fa-angle-down")?2:1;
+    //         obj[type] = value;
+    //         // console.log(obj);
+    //     }
+
+    //     $.ajax({
+    //         type: "get",
+    //         url: "/product/queryProduct",
+    //         data: obj,
+    //         success: function(info) {
+    //             // console.log(info);
+    //             // 假定获取数据需要一秒钟
+    //             setTimeout(function() {
+    //                 $(".product ul").append(template("tpl", info));;
+
+    //                 // 数据拿到后, 结束上拉加载,不然上拉加载状态会一直维持   
+    //                 // info代表每次发送请求的时候返回的结果,其中的data是结果集, 如果有一次返回结果为空,这说明没有更多数据了
+    //                 // 此时传true, 这下次再上拉的时候,就不会发送请求了
+    //                 mui(".mui-scroll-wrapper").pullRefresh().endPullupToRefresh(info.data.length === 0);              
+    //             }, 1000);
+    //         }
+    //     })
+    // }
 
 
     // 功能二 点击搜索,实现页面跳转
@@ -137,17 +168,14 @@ $(function() {
     // 1.样式层面
         // 1.1 点击li, 如果没有.active, 给它加上.active, 移除其他li的.active,并把li中的箭头重置为down
         // 1.2 如果有.active, 切换li中的箭头的方向
-    $(".lt_sort li[data-type]").on("tap", function() {
-        console.log(11);
+    $(".lt_sort li[data-type]").on("click", function() {
         if( $(this).hasClass("active") ) {
             $(this).find(".lt_sort_icon").toggleClass("fa-angle-down").toggleClass("fa-angle-up");
         }else {
             $(this).addClass("active").siblings().removeClass("active");
             $(".lt_sort_icon").removeClass("fa-angle-up").addClass("fa-angle-down");
         }
-        
-        // 因为下拉刷新会触发render(callback(info)), 所以只要手动触发一下下拉刷新就好了
-        mui(".mui-scroll-wrapper").pullRefresh().pulldownLoading();
+        render();
     })
 
 
