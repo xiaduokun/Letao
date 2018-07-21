@@ -1,0 +1,92 @@
+<!-- 
+  这一这整个页面都是移动端页面， 
+  看效果也要chrome的模拟移动端测试，不然像手动滑动之类的效果是看不见的 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>购物车</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./lib/fa/css/font-awesome.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/cart.css">
+
+</head>
+
+<body>
+  <div class="lt_container">
+    <!-- 头部 -->
+    <div class="lt_header">
+      <a href="javascript:history.go(-1)">
+        <span class="fa fa-chevron-left icon_left"></span>
+      </a>
+      <h3>购物车</h3>
+    </div>
+
+    <!-- 主体 -->
+    <div class="lt_main">
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+
+          <ul id="OA_task_2" class="mui-table-view">
+            <li class="mui-table-view-cell">
+              <div class="mui-slider-right mui-disabled">
+                <a class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit"></a>
+                <a class="mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete"></a>
+              </div>
+              <div class="mui-slider-handle">
+                <div class="mui-table-cell">
+                  左滑显示多功能菜单
+                </div>
+              </div>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- 尾部 -->
+    <div class="lt_footer mui-clearfix">
+      <a href="index.html">
+        <span class="fa fa-home"></span>
+        <p>首页</p>
+      </a>
+      <a href="category.html">
+        <span class="fa fa-bars"></span>
+        <p>分类</p>
+      </a>
+      <a href="cart.html" class="active">
+        <span class="fa fa-shopping-cart"></span>
+        <p>购物车</p>
+      </a>
+      <a href="user.html">
+        <span class="fa fa-user"></span>
+        <p>会员中心</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- 商品的模板 -->
+  <script type="text/html" id="tpl">
+
+  </script>
+
+
+
+
+  <script src="./lib/mui/js/mui.js"></script>
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/cart.js"></script>
+
+</body>
+
+</html>

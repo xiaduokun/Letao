@@ -6,8 +6,8 @@ $(function () {
   $(".btn_login").on("click", function () {
 
 
-    var username = $("[name='username']").val().trim();
-    var password = $("[name='password']").val().trim();
+    var username = $("[name='username']").val();
+    var password = $("[name='password']").val();
 
 
     //校验

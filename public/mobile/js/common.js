@@ -9,6 +9,7 @@ mui(".mui-slider").slider({
   interval: 1000
 });
 
+
 var tools = {
   getSearchObj:function () {
     //获取地址栏参数,封装成一个对象  {name:"zs", age:18, desc:"呵呵呵"}

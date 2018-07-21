@@ -1,0 +1,83 @@
+<!-- 
+  这一这整个页面都是移动端页面， 
+  看效果也要chrome的模拟移动端测试，不然像手动滑动之类的效果是看不见的 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./lib/fa/css/font-awesome.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/login.css">
+
+</head>
+
+<body>
+  <div class="lt_container">
+    <!-- 头部 -->
+    <div class="lt_header">
+      <a href="javascript:history.go(-1)">
+        <span class="fa fa-chevron-left icon_left"></span>
+      </a>
+      <h3>登录</h3>
+    </div>
+
+    <!-- 主体 -->
+    <div class="lt_main">
+      <form class="mui-input-group">
+          <div class="mui-input-row">
+              <label>用户名</label>
+          <input type="text" name="username" class="mui-input-clear" placeholder="请输入用户名">
+          </div>
+          <div class="mui-input-row">
+              <label>密码</label>
+              <input type="password" name="password" class="mui-input-password" placeholder="请输入密码">
+          </div>
+          <div class="mui-button-row">
+              <button type="button" class="mui-btn mui-btn-primary btn-login" >登录</button>
+              <button type="reset" class="mui-btn mui-btn-danger" >重置</button>
+          </div>
+      </form>
+    </div>
+
+    <!-- 尾部 -->
+    <div class="lt_footer mui-clearfix">
+      <a href="index.html">
+        <span class="fa fa-home"></span>
+        <p>首页</p>
+      </a>
+      <a href="category.html">
+        <span class="fa fa-bars"></span>
+        <p>分类</p>
+      </a>
+      <a href="cart.html">
+        <span class="fa fa-shopping-cart"></span>
+        <p>购物车</p>
+      </a>
+      <a href="user.html" class="active">
+        <span class="fa fa-user"></span>
+        <p>会员中心</p>
+      </a>
+    </div>
+  </div>
+
+  
+
+
+
+
+  <script src="./lib/mui/js/mui.js"></script>
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/login.js"></script>
+
+</body>
+
+</html>
